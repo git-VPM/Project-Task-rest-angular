@@ -1,0 +1,41 @@
+<div>
+    <div>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Task Detail of</th>
+                    <th>Action Date</th>
+                    <th>Remarks</th>
+                    <th>User</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tr *ngFor="let x of task,let i =index">
+                <td>{{i+1}}</td>
+
+                <td>
+                    {{x.fk_task__vchr_title}}
+                </td>
+                <td>
+                    {{x.date_action | date:'dd-MM-yyyy HH:mm:ss'}}
+                </td>
+                <td>
+                    {{x.vchr_remarks}}
+                </td>
+                <td>
+                    <span *ngIf="x.fk_user_detail__vchr_name == null">&nbsp;Unassigned</span>
+                    <span *ngIf="x.fk_user_detail__vchr_name">&nbsp;{{x.fk_user_detail__vchr_name}}</span>
+                </td>
+                <td>
+                    <span *ngIf="x.status == 0">Unassigned</span>
+                    <span *ngIf="x.status == 1">Assigned</span>
+                    <span *ngIf="x.status == -1">Rejected</span>
+                    <span *ngIf="x.status == 2">Closed</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
