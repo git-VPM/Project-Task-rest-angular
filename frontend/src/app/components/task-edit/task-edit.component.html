@@ -1,0 +1,69 @@
+<div>
+    <div *ngIf="currentTask.pk_bint_id" class="edit-form">
+        <h2>Task</h2>
+        <form>
+            <div class="form-group">
+                <label for="rep_date">Reported Date :</label>
+                <input disabled type="date" class="form-control" id="date" [(ngModel)]="currentTask.rep_date"
+                    name="rep_date">
+                <!-- {{currentTask.rep_date}} -->
+            </div>
+            <div class="form-group">
+                <label for="vchr_title">Title :</label>
+                <input disabled type="text" class="form-control" id="title" [(ngModel)]="currentTask.vchr_title"
+                    name="title" />
+                <!-- {{currentTask.vchr_title}} -->
+            </div>
+            <div class="form-group">
+                <label for="fk_type">Type :&nbsp;</label>
+                <select disabled id="type" [(ngModel)]="currentTask.fk_type" name="type">
+                    <option *ngFor="let item of type; index as i;" value="{{item.pk_bint_id}}">
+                        {{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fk_client">Client :&nbsp;</label>
+                <select disabled id="client" [(ngModel)]="currentTask.fk_client" name="client">
+                    <option *ngFor="let item of client; index as i;" value="{{item.pk_bint_id}}">
+                        {{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fk_priority">Priority :&nbsp;</label>
+                <select disabled id="priority" [(ngModel)]="currentTask.fk_priority" name="priority">
+                    <option *ngFor="let item of priority; index as i;" value="{{item.pk_bint_id}}">
+                        {{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vchr_remarks">Remarks :&nbsp;</label>
+                <input type="text" class="form-control" id="remarks" [(ngModel)]="currentTask.vchr_remarks"
+                    name="remarks" />
+            </div>
+            <div class="form-group">
+                <label for="status">Status :&nbsp;</label>
+                <select id="status" [(ngModel)]="currentTask.status" name="status">
+                    <option value=1>Assigned</option>
+                    <option value=-1>Rejected</option>
+                    <option value=2>Closed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fk_user_detail">User :&nbsp;</label>
+                <select id="user" [(ngModel)]="currentTask.fk_user_detail" name="user">
+                    <option *ngFor="let item of user; index as i;" value="{{item.pk_bint_id}}">
+                        {{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+        </form>
+        <button type="submit" class="badge badge-success mb-2" (click)="updateTask()"
+            style="width: 11%;line-height: 2;font-size: medium;">
+            Update
+        </button>
+        <p>{{ message }}</p>
+    </div>
+</div>
